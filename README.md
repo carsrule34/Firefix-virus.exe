@@ -1,2 +1,1 @@
-# Firefix-virus.exe
-this virus  is in testing use this at you own risk 
+Golden OG Fortnite launcher For 8.50. launcher in testing 
