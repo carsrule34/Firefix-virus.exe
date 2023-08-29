@@ -1,0 +1,55 @@
+
+import tkinter as tk 
+import webbrowser
+import subprocess
+import os
+from tkinter import filedialog
+ 
+class GameLauncher:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Project Golden OG FN Launcher Version 1.1 - TESTING")
+        self.root.configure(bg="black")
+
+        self.label = tk.Label(root, text="Welcome To Project Golden Launcher Power By Project Reboot You need UuuClient and Project_Reboot_3.0.dll and aslo need Fotnite_Console_v1.1.dll and LawinServer. Aslo i testing for google account system to make a account for fortnite on my app i testing a lot of thing. This app is in testing so going be lots of upadets   :)   ", bg="black", fg="white")
+        self.label.pack(pady=10)
+ 
+        self.download_button = tk.Button(root, text="Run Fortnite Win64 File ", command=self.open_download_directory)
+        self.download_button.pack(pady=5)
+ 
+        self.website_label = tk.Label(root, text="Download Fortnite Link", fg="blue", cursor="hand2", bg="black")
+        self.website_label.pack(pady=5)
+        self.website_label.bind("<Button-1>", self.open_website)
+ 
+ 
+
+        self.quit_button = tk.Button(root, text="Exit Launcher", command=root.destroy)
+        self.quit_button.pack(pady=5)
+ 
+    def open_download_directory(self):
+        folder_path = filedialog.askdirectory(title="Select Your Folder")
+ 
+        if folder_path:
+            # Check if the selected folder contains a "Win64" folder
+            win64_folder = os.path.join(folder_path, "Win64")
+            if os.path.exists(win64_folder) and os.path.isdir(win64_folder):
+                # Remove the existing "Win64" folder
+                try:
+                    os.rmdir(win64_folder)
+                except OSError as e:
+                    print(f"Error removing 'Win64' folder: {e}")
+            
+            # Now, set the current working directory to the selected folder
+            os.chdir(folder_path)
+ 
+            # Run the .bat file
+            subprocess.Popen(["Launcher.bat"])
+            print("Launching Fortnite...")
+ 
+    def open_website(self, event):
+        webbrowser.open_new_tab("https://github.com/notsamicc/Fortnite-Builds")
+ 
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = GameLauncher(root)
+    root.mainloop()
